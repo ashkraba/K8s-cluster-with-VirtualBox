@@ -1,4 +1,0 @@
-[master]
-master1 ansible_host=10.6.18.28
-[nodes]
-node1 ansible_host=10.6.19.16

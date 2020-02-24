@@ -1,2 +1,0 @@
-start_token: a12345.a123456789012349
-master_ip: "{{ hostvars.master1.ansible_host }}"

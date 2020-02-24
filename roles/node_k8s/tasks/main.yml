@@ -1,4 +1,0 @@
----
-- name: join node to the cluster
-  shell: "kubeadm join {{ master_ip}}:6443 --token {{ start_token }} --discovery-token-unsafe-skip-ca-verification"
-# tasks file for node_k8s

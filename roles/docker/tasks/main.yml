@@ -1,0 +1,31 @@
+---
+- name: add docker repo
+  yum_repository:
+    name: docker
+    description: docker YUM repo
+    baseurl: "{{ docker_repo_url }}"
+    enabled: yes
+    gpgcheck: no
+
+- name: install depend-s and docker
+  yum:
+    name: "{{ item }}"
+  loop:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+
+- name: add user to a docker group
+  user:
+    name: "{{ user_name }}"
+    groups: docker
+    append: yes
+
+- name: start and enable docker
+  service:
+    name: docker
+    state: started
+    enabled: yes

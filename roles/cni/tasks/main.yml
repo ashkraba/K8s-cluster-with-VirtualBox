@@ -1,0 +1,5 @@
+---
+- name: install cni
+  shell: kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+  become_user: "{{ user_name }}"
+# tasks file for calico_cni

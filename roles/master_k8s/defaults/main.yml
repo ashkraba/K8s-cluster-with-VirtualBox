@@ -1,0 +1,5 @@
+---
+pod_net: 192.168.0.0/16
+start_token: a12345.a123456789012345
+service_net: 192.168.100.0/16
+# defaults file for master_k8s

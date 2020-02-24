@@ -1,0 +1,23 @@
+---
+- name: all for master
+  hosts: master
+  become: yes
+  roles:
+    - preparation
+    - user
+    - iptables
+    - docker
+    - k8s
+    - master_k8s
+    - cni
+
+- name: all for node
+  hosts: nodes
+  become: yes
+  roles:
+    - preparation
+    - user
+    - iptables
+    - docker
+    - k8s
+    - node_k8s

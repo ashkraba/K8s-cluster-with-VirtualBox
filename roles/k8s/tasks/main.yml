@@ -1,0 +1,38 @@
+---
+- name: Disable system swap
+  shell: "swapoff -a"
+
+- name: Remove swap from fstab
+  lineinfile:
+    dest: /etc/fstab
+    regexp: 'swap.*\i'
+    state: absent
+
+- name: network fix
+  sysctl:
+    name: net.bridge.bridge-nf-call-iptables
+    value: 1
+    state: present
+
+- name: add kubernetes repo
+  yum_repository:
+    name: kubernetes
+    description: kubernetes YUM repo
+    baseurl: "{{ k8s_repo_url }}"
+    enabled: yes
+    gpgcheck: no
+
+- name: install k8s
+  yum:
+    name: "{{ item }}"
+  loop:
+    - kubelet
+    - kubeadm
+    - kubectl
+
+- name: start and enable k8s
+  service:
+    name: kubelet
+    state: started
+    enabled: yes
+# tasks file for k8s

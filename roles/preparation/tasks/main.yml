@@ -1,0 +1,25 @@
+---
+- name: off selinux
+  shell: setenforce 0
+
+- name: disable selinux
+  lineinfile:
+    path: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: SELINUX=disable
+
+- name: stop and disable firewalld
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no
+    masked: yes
+
+- name: install ntpdate
+  yum:
+    name: ntpdate
+    state: present
+
+- name: update time
+  shell: "ntpdate {{ time_server }}"
+# tasks file for preparation

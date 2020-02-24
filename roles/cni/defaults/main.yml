@@ -1,0 +1,5 @@
+---
+cni_url: https://docs.projectcalico.org/manifests/calico.yaml
+#cni_url: https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')
+#cni_url: https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+# defaults file for calico_cni

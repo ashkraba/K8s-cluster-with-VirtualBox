@@ -1,0 +1,23 @@
+---
+- name: install iptables
+  yum:
+    name: iptables-services
+    state: present
+
+- name: stop iptables
+  service:
+    name: iptables
+    state: stopped
+
+- name: generate iptables configuration
+  template:
+    src: iptables_rules.j2
+    dest: /etc/sysconfig/iptables
+    owner: root
+
+- name: start and enable iptables service
+  service:
+    name: iptables
+    state: started
+    enabled: yes
+# tasks file for iptables

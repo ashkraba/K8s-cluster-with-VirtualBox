@@ -31,4 +31,5 @@ You can also:
 
 # Notes:
 All this roles was tested on default VirtualBox virtual machines with CentOS. If you found any mistakes please let me know. I hope this roles help you and save some working time.
+I have tested this roles on GCP with CentOS 7 images and it works fine, but you need change apiserver-advertise-address in master_k8s role, because GCP engines use two network adapters (internal and external).
 
